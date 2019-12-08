@@ -2,20 +2,24 @@ import { Action } from '../ngrx-fake/ngrx';
 /**
  * Acciones del contador.
  */
-const incrementadorAction: Action = {
+export const incrementadorAction: Action = {
     type: 'INCREMENTAR'
 };
 
-const decrementadorAction: Action = {
+export const decrementadorAction: Action = {
     type: 'DECREMENTAR'
 };
 
-const multiplicarAction: Action = {
+export const multiplicarAction: Action = {
     type: 'MULTIPLICAR',
     payload: 2
 };
 
-const dividirAction: Action = {
+export const dividirAction: Action = {
     type: 'DIVIDIR',
-    payload: 5
+    payload: 2
+};
+
+export const resetAction: Action = {
+    type: 'RESET'
 };
