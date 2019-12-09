@@ -7,4 +7,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'redux-app';
+  contador: number;
+
+  constructor() {
+    this.contador = 10;
+  }
+
+  incrementar() {
+    this.contador++;
+  }
+
+  decrementar() {
+    this.contador--;
+  }
+
+  displayContador(contador) {
+    this.contador = contador;
+  }
 }
