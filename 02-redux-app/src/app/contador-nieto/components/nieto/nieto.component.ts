@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-nieto',
@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class NietoComponent implements OnInit {
+  @Input() contador: number;
+
+  @Output()
+  cambioContador = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  reset() {
+    this.contador = 0;
+    this.cambioContador.emit(this.contador);
+  }
 }

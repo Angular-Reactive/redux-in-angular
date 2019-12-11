@@ -8,6 +8,7 @@ import { NietoComponent } from './components/nieto/nieto.component';
   declarations: [NietoComponent],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [NietoComponent]
 })
 export class ContadorNietoModule { }

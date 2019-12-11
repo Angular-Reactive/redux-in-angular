@@ -9,7 +9,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class HijoComponent implements OnInit {
 
   @Input() contador: number;
-  @Output() cambioContador = new EventEmitter();
+  @Output() cambioContador = new EventEmitter<number>();
 
   constructor() { }
 
@@ -23,6 +23,11 @@ export class HijoComponent implements OnInit {
 
   dividir() {
     this.contador = this.contador / 2;
+    this.cambioContador.emit(this.contador);
+  }
+
+  displayContador(contador) {
+    this.contador = contador;
     this.cambioContador.emit(this.contador);
   }
 
