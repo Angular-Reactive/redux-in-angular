@@ -1,17 +1,19 @@
+/**
+ * Now that we have built our Root Store Module, composed of Feature Store Modules,
+ * let's add it to the main app.module.ts and show just how neat and clean the wiring
+ * up process is.
+ */
 // Modules
 import { environment } from './../environments/environment';
-import { ContadorHijoModule } from './components/contador/contador-hijo/contador-hijo.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
-import { StoreModule } from '@ngrx/store';
-
-// Components
+import { { RootStoreModule } from './root-store';
 import { AppComponent } from './app.component';
+import { RootStoreModule } from './root-store/root-store.module';
 
-// Reducers
-import { contadorReducer } from './components/contador/store/contador.reducer';
+
 
 @NgModule({
   declarations: [
@@ -20,9 +22,8 @@ import { contadorReducer } from './components/contador/store/contador.reducer';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ContadorHijoModule,
-    StoreModule.forRoot({contador: contadorReducer}),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    StoreModule.forRoot({}),
+    RootStoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
