@@ -2,8 +2,8 @@ import { IncrementarAction, DecrementarAction } from './store/actions/contador-a
 import { State } from './store/state';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as R from 'ramda';
-import { stat } from 'fs';
+
+
 
 @Component({
   selector: 'app-root',
@@ -17,8 +17,7 @@ export class AppComponent implements OnInit {
   constructor(private store: Store<State>) {
     // this.contador = 10;
     this.store.subscribe(state => {
-      this.contador = ;
-      // this.contador = state.contador
+      this.contador = state.contador;
     });
   }
 
@@ -27,13 +26,11 @@ export class AppComponent implements OnInit {
   }
 
   incrementar() {
-    // this.contador++;
     const incrementarAction = new IncrementarAction();
     this.store.dispatch(incrementarAction);
   }
 
   decrementar() {
-    // this.contador--;
     const decrementarAction = new DecrementarAction();
     this.store.dispatch(decrementarAction);
   }
