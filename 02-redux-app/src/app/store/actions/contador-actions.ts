@@ -1,11 +1,11 @@
 import { Action } from '@ngrx/store';
 
 export enum ActionTypes {
-  INCREMENTAR = '[Root] Incrementar',
-  DECREMENTAR = '[Root] Decrementar',
-  MULTIPLICAR = '[Hijo] Multiplicar',
-  DIVIDIR = '[Hijo] Dividir',
-  RESET = '[Nieto] Reset',
+  INCREMENTAR = '[Contador] Incrementar',
+  DECREMENTAR = '[Contador] Decrementar',
+  MULTIPLICAR = '[Contador] Multiplicar',
+  DIVIDIR = '[Contador] Dividir',
+  RESET = '[Contador] Reset',
 }
 
 export class IncrementarAction implements Action {

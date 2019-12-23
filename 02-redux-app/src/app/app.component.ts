@@ -1,4 +1,4 @@
-import { IncrementarAction, DecrementarAction } from './store/actions/contador-actions';
+import * as contadorActions from './store/actions/contador-actions';
 import { State } from './store/state';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
@@ -24,12 +24,12 @@ export class AppComponent implements OnInit {
   }
 
   incrementar() {
-    const incrementarAction = new IncrementarAction();
+    const incrementarAction = new contadorActions.IncrementarAction();
     this.store.dispatch(incrementarAction);
   }
 
   decrementar() {
-    const decrementarAction = new DecrementarAction();
+    const decrementarAction = new contadorActions.DecrementarAction();
     this.store.dispatch(decrementarAction);
   }
 

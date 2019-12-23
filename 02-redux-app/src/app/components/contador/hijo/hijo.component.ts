@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from '../../../store/state';
-import { MultiplicarAction, DividirAction } from '../../../store/actions/contador-actions';
+import * as contadorActions from '../../../store/actions/contador-actions';
 
 
 @Component({
@@ -20,12 +20,12 @@ export class HijoComponent implements OnInit {
   }
 
   multiplicar() {
-    const action = new MultiplicarAction(2);
+    const action = new contadorActions.MultiplicarAction(2);
     this.store.dispatch(action);
   }
 
   dividir() {
-    const action = new DividirAction(2);
+    const action = new contadorActions.DividirAction(2);
     this.store.dispatch(action);
   }
 
