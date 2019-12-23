@@ -16,9 +16,7 @@ export class AppComponent implements OnInit {
 
   constructor(private store: Store<State>) {
     // this.contador = 10;
-    this.store.subscribe(state => {
-      this.contador = state.contador;
-    });
+    this.store.select('contador').subscribe(contador => this.contador = contador);
   }
 
   ngOnInit() {
