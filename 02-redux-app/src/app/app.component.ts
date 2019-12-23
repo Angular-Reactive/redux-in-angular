@@ -32,8 +32,4 @@ export class AppComponent implements OnInit {
     const decrementarAction = new contadorActions.DecrementarAction();
     this.store.dispatch(decrementarAction);
   }
-
-  // displayContador(contador) {
-  //   this.contador = contador;
-  // }
 }

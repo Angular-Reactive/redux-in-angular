@@ -18,7 +18,7 @@ export function contadorReducer(state: number = 10, action: ContadorActions) {
       return state / action.payload;
 
     case ActionTypes.RESET:
-      return action.payload;
+      return 0;
 
     default:
       return state;

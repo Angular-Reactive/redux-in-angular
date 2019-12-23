@@ -28,10 +28,4 @@ export class HijoComponent implements OnInit {
     const action = new contadorActions.DividirAction(2);
     this.store.dispatch(action);
   }
-
-  displayContador(contador) {
-    this.contador = contador;
-    // this.cambioContador.emit(this.contador);
-  }
-
 }
