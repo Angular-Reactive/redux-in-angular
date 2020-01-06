@@ -15,5 +15,6 @@
             [value]="todo.texto"
             [formControl]="txtInput"
             (blur)="terminarEdicion()"
+            (keydown.enter)="$event.target.blur();false"
             #txtInputFisico>
   </li>

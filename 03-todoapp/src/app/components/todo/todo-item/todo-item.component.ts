@@ -46,5 +46,18 @@ export class TodoItemComponent implements OnInit {
 
   terminarEdicion() {
     this.editando = false;
+
+    if(this.txtInput.invalid || this.txtInput.value === this.todo.texto) {
+      this.txtInput.setValue(this.todo.texto);
+      return;
+    }
+
+    if(this.txtInput.value === '') {
+      this.txtInput.setValue(this.todo.texto);
+      return;
+    }
+
+    const action = new fromTodo.EditarTodoAction(this.todo.id, this.txtInput.value);
+    this.store.dispatch(action);
   }
 }
