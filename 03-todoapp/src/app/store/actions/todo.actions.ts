@@ -3,7 +3,8 @@ import { Action } from '@ngrx/store';
 export enum ActionTypes {
   AGREGAR_TODO = '[TODO] Agregar Todo',
   TOGGLE_TODO = '[TODO] Toggle Todo',
-  EDITAR_TODO = '[TODO] Editar Todo'
+  EDITAR_TODO = '[TODO] Editar Todo',
+  BORRAR_TODO = '[TODO] Borrar Todo'
 }
 
 export class AgregarTodoAction implements Action {
@@ -30,6 +31,15 @@ export class EditarTodoAction implements Action {
   }
 }
 
+export class BorrarTodoAction implements Action {
+  readonly type = ActionTypes.BORRAR_TODO;
+
+  constructor(public id: number) {
+
+  }
+}
+
 export type TodoActions = AgregarTodoAction |
                           ToggleTodoAction |
-                          EditarTodoAction;
+                          EditarTodoAction |
+                          BorrarTodoAction;

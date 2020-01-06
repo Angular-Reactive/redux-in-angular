@@ -60,4 +60,9 @@ export class TodoItemComponent implements OnInit {
     const action = new fromTodo.EditarTodoAction(this.todo.id, this.txtInput.value);
     this.store.dispatch(action);
   }
+
+  borrarTodo() {
+    const action = new fromTodo.BorrarTodoAction(this.todo.id);
+    this.store.dispatch(action);
+  }
 }
