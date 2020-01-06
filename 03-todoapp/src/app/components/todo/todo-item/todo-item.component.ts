@@ -1,9 +1,12 @@
 import { FormControl, Validators } from '@angular/forms';
 import { Todo } from './../models/todo.model';
+import { Store } from '@ngrx/store';
 /**
  * This component is the responsable of the todo list item management.
 */
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { AppState } from '../../../store/state';
+import * as fromTodo from 'src/app/store/actions/todo.actions';
 
 @Component({
   selector: 'app-todo-item',
@@ -19,12 +22,18 @@ export class TodoItemComponent implements OnInit {
   txtInput: FormControl;
   editando: boolean;
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
     this.chkField = new FormControl(this.todo.completado);
     this.txtInput = new FormControl(this.todo.texto, Validators.required);
-    console.log(this.todo);
+
+    // Cada vez que se cambie el valor del chkField, se disparara' la ACTION ToggleTodoAction
+    this.chkField.valueChanges
+        .subscribe( () => {
+          const action = new fromTodo.ToggleTodoAction(this.todo.id);
+          this.store.dispatch(action);
+        });
   }
 
   editar() {
