@@ -22,6 +22,14 @@ export function todoReducer(state = estadoInicial, action: fromTodo.TodoActions)
         }
       });
 
+    case fromTodo.ActionTypes.TOGGLE_ALL_TODO:
+      return state.map( todoEdit => {
+        return {
+          ...todoEdit,
+          completado: action.completado
+        };
+      });
+
     case fromTodo.ActionTypes.EDITAR_TODO:
       return state.map( todoEdit => {
         if (todoEdit.id === action.id) {
