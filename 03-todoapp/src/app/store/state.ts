@@ -1,4 +1,8 @@
 import { Todo } from './../components/todo/models/todo.model';
+import { ActionReducerMap } from '@ngrx/store';
+import * as fromTodo from './reducers/todo.reducer';
+import * as fromFiltro from '../filter/reducers/filter.reducer';
+import * as fromFiltroActions from '../filter/actions/filter.action';
 
 const todo1 = new Todo('Vencer a Thanos');
 const todo2 = new Todo('Salvar el mundo');
@@ -8,6 +12,14 @@ todo2.completado = true;
 
 export interface AppState {
   todos: Todo[];
+  filtro: fromFiltroActions.filtrosValidos;
 }
 
 export const estadoInicial: Todo[] = [todo1, todo2, todo3];
+
+
+// Combinacion de todos los reducers que usa la aplicacion
+export const appReducers: ActionReducerMap<AppState> = {
+  todos: fromTodo.todoReducer,
+  filtro: fromFiltro.filtroReducer
+};
