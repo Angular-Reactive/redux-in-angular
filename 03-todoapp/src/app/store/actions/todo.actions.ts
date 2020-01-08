@@ -8,6 +8,7 @@ export enum ActionTypes {
   BORRAR_TODO = '[TODO] Borrar Todo'
 }
 
+
 export class AgregarTodoAction implements Action {
   readonly type = ActionTypes.AGREGAR_TODO;
 

@@ -4,6 +4,7 @@ import * as fromTodo from './reducers/todo.reducer';
 import * as fromFiltro from '../filter/reducers/filter.reducer';
 import * as fromFiltroActions from '../filter/actions/filter.action';
 
+
 const todo1 = new Todo('Vencer a Thanos');
 const todo2 = new Todo('Salvar el mundo');
 const todo3 = new Todo('Pedir prestado el traje de Ironman');
