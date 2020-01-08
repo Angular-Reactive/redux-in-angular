@@ -2,6 +2,7 @@
  * Esta classe representa il modelo de una tarea
  * a realizar (ToDo)
  */
+/**
 export class Todo {
   public id: number;
   public texto: string;
@@ -12,4 +13,10 @@ export class Todo {
     this.completado = false; // Los ToDos seran siempre creados como Pendientes
     this.id = Math.random();
   }
+}
+ */
+export interface Todo {
+  id: string;
+  texto: string;
+  completado: boolean;
 }

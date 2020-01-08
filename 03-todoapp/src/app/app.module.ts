@@ -20,8 +20,13 @@ import { TodosListComponent } from './components/todo/todos-list/todos-list.comp
 import { TodoItemComponent } from './components/todo/todo-item/todo-item.component';
 import { TodoFooterComponent } from './components/todo/todo-footer/todo-footer.component';
 import { TodoAddComponent } from './components/todo/todo-add/todo-add.component';
+import { reducers } from './store/index';
 
-
+/**
+ * The app module will inclue a reducer map called "reducers"
+ * that we'll define in a little bit that's passed-in to StoreModule's
+ * "forRoot" method.
+ */
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +40,7 @@ import { TodoAddComponent } from './components/todo/todo-add/todo-add.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot(appReducers),
+    StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
       logOnly: environment.production // Restrict extension to log-only mode
     }),

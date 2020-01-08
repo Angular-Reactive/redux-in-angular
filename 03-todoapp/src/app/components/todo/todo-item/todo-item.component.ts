@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 */
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { AppState } from '../../../store/state';
-import * as fromTodo from 'src/app/store/actions/todo.actions';
+import * as fromTodoActions from 'src/app/store/actions/todo.actions';
 
 @Component({
   selector: 'app-todo-item',
@@ -31,7 +31,7 @@ export class TodoItemComponent implements OnInit {
     // Cada vez que se cambie el valor del chkField, se disparara' la ACTION ToggleTodoAction
     this.chkField.valueChanges
         .subscribe( () => {
-          const action = new fromTodo.ToggleTodoAction(this.todo.id);
+          const action = new fromTodoActions.ToggleTodoAction({id: this.todo.id, completado: !this.todo.completado});
           this.store.dispatch(action);
         });
   }
@@ -57,12 +57,12 @@ export class TodoItemComponent implements OnInit {
       return;
     }
 
-    const action = new fromTodo.EditarTodoAction(this.todo.id, this.txtInput.value);
+    const action = new fromTodoActions.EditarTodoAction({id: this.todo.id, texto: this.txtInput.value});
     this.store.dispatch(action);
   }
 
   borrarTodo() {
-    const action = new fromTodo.BorrarTodoAction(this.todo.id);
+    const action = new fromTodoActions.BorrarTodoAction({id: this.todo.id});
     this.store.dispatch(action);
   }
 }
