@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import * as fromFiltro from '../../../filter/actions/filter.action';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store/state';
+import { Todo } from '../models/todo.model';
 
 @Component({
   selector: 'app-todo-footer',
@@ -15,12 +16,14 @@ export class TodoFooterComponent implements OnInit {
 
   filtrosValidos: fromFiltro.filtrosValidos [] = ['todos', 'completados', 'pendientes'];
   filtroActual: fromFiltro.filtrosValidos;
+  pendientes: number;
 
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
     // Subscribirme al STATE para saber cuando cambia el valor del filtro
     this.store.subscribe( state => {
+      this.contarPendientes(state.todos);
       this.filtroActual = state.filtro;
     });
   }
@@ -32,6 +35,14 @@ export class TodoFooterComponent implements OnInit {
   cambiarFiltro(nuevoFiltro: fromFiltro.filtrosValidos) {
     const action = new fromFiltro.SetFiltroAction(nuevoFiltro);
     this.store.dispatch(action);
+  }
+
+  /**
+   * Devuelve el numero de ToDos pendientes.
+   * @param todos
+   */
+  contarPendientes( todos: Todo []) {
+    this.pendientes = todos.filter( todo => !todo.completado).length;
   }
 
 }
