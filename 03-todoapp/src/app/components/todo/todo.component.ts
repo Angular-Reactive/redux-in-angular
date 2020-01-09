@@ -2,7 +2,7 @@
  * This component is the responsable of the todo's management.
 */
 import { Component, OnInit } from '@angular/core';
-import * as fromTodo from 'src/app/store/actions/todo.actions';
+import * as fromTodoActions from 'src/app/store/actions/todo.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/state';
 
@@ -22,8 +22,8 @@ export class TodoComponent implements OnInit {
   toggleAll() {
     this.completado = !this.completado;
 
-    const action = new fromTodo.ToggleAllTodoAction(this.completado);
-    this.store.dispatch(action);
+    // const action = new fromTodoActions.ToggleAllTodoAction(this.completado);
+    // this.store.dispatch(action);
   }
 
 }

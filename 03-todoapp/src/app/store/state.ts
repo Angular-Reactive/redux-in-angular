@@ -28,11 +28,15 @@ export const appReducers: ActionReducerMap<AppState> = {
 };
 */
 
-export interface AppState extends EntityState<Todo> {};
+export interface AppState extends EntityState<Todo> {
+  filtro: fromFiltroActions.filtrosValidos;
+};
 
 export const todoAdapter: EntityAdapter<Todo> = createEntityAdapter<Todo>();
 
-export const initialState: AppState = todoAdapter.getInitialState();
+export const initialState: AppState = todoAdapter.getInitialState({
+  filtro: 'completados'
+});
 
 
 

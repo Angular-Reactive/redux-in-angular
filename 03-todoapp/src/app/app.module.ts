@@ -2,11 +2,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
+import { TodoModule } from './todo/todo.module';
 
 // ngrx
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { appReducers } from './store/state';
+//import { appReducers } from './store/state';
 
 import { ReactiveFormsModule} from '@angular/forms';
 
@@ -21,6 +22,7 @@ import { TodoItemComponent } from './components/todo/todo-item/todo-item.compone
 import { TodoFooterComponent } from './components/todo/todo-footer/todo-footer.component';
 import { TodoAddComponent } from './components/todo/todo-add/todo-add.component';
 import { reducers } from './store/index';
+
 
 /**
  * The app module will inclue a reducer map called "reducers"
@@ -40,6 +42,7 @@ import { reducers } from './store/index';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    TodoModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
       logOnly: environment.production // Restrict extension to log-only mode

@@ -5,7 +5,7 @@ import { Todo } from './../models/todo.model';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/state';
-import { selectAllTodos } from 'src/app/store';
+import { selectAllTodos } from '../../../store/index';
 
 @Component({
   selector: 'app-todos-list',
@@ -20,11 +20,17 @@ export class TodosListComponent implements OnInit {
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.todos$ = this.store.select(selectAllTodos);
+    // this.todos$ = this.store.select(selectAllTodos);
 
-    // this.store.subscribe(state => {
-    //   this.todos = state.todos;
+    // this.store.select('entities').subscribe(entities => {
+    //   this.todos$ = entities;
+    //   console.log(entities);
     // });
+    this.store.subscribe( state => {
+      console.log(selectAllTodos);
+    });
+
   }
 
 }
+

@@ -1,6 +1,7 @@
 import * as fromTodoReducers from '../../app/store/reducers/todo.reducer';
-import { ActionReducerMap, createFeatureSelector } from '@ngrx/store';
+import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromState from './state';
+import { todoAdapter } from './state';
 
 /**
  * We need to create the "ActionReducerMap" that's imported in our app module
@@ -17,6 +18,8 @@ export const reducers: ActionReducerMap<any> = {
   todo: fromTodoReducers.todoReducer
 };
 
-export const selectTodosState = createFeatureSelector<fromState.AppState>('todos');
+export const selectTodoState = createFeatureSelector<fromState.AppState>('todo');
 
-export const { selectAll: selectAllTodos } = fromState.todoAdapter.getSelectors(selectTodosState);
+export const { selectAll: selectAllTodos } = fromState.todoAdapter.getSelectors(
+  selectTodoState
+);

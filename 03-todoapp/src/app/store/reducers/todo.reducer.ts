@@ -17,7 +17,10 @@ export function todoReducer(state = initialState, action: fromTodo.TodoActions) 
 
     case fromTodo.ActionTypes.TOGGLE_TODO:
       return todoAdapter.updateOne(
-        {id: action.payload.id, changes: { completado: action.payload.completado}},
+        {
+          id: action.payload.id,
+          changes: { completado: action.payload.completado}
+        },
         state
       );
 

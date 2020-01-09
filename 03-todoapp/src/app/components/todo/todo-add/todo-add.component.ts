@@ -8,6 +8,7 @@ import { AppState } from 'src/app/store/state';
 import * as fromTodoActions from 'src/app/store/actions/todo.actions';
 import { Todo } from '../models/todo.model';
 import { UUID } from 'angular2-uuid';
+import { selectAllTodos } from 'src/app/store';
 
 @Component({
   selector: 'app-todo-add',
@@ -44,6 +45,7 @@ export class TodoAddComponent implements OnInit {
     };
 
     this.store.dispatch(new fromTodoActions.AgregarTodoAction({todo}));
+    console.log(selectAllTodos);
     this.txtInput.setValue('');
   }
 

@@ -1,4 +1,9 @@
 <ul class="todo-list">
-  <!-- These are here just to show the structure of the list items -->
-  <app-todo-item *ngFor="let todo of todos" [todo]="todo"></app-todo-item>
+  <!-- These are here just to show the structure of the list items
+  <li *ngFor="let todo of todos$ | async">{{ todo.texto }}</li>
+  <app-todo-item *ngFor="let todo of todos" [todo]="todo"></app-todo-item>-->
+  <app-todo-item *ngFor="let todo of todos$ | async" [todo]="todo">{{ todo.texto }}</app-todo-item>
+
+
+
 </ul>
