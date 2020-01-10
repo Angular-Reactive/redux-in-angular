@@ -6,6 +6,7 @@ import * as fromFiltro from '../../../filter/actions/filter.action';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store/state';
 import { Todo } from '../models/todo.model';
+import * as fromTodo from 'src/app/store/actions/todo.actions';
 
 @Component({
   selector: 'app-todo-footer',
@@ -39,10 +40,15 @@ export class TodoFooterComponent implements OnInit {
 
   /**
    * Devuelve el numero de ToDos pendientes.
-   * @param todos
+   * @param todos Lista de tareas
    */
   contarPendientes( todos: Todo []) {
     this.pendientes = todos.filter( todo => !todo.completado).length;
+  }
+
+  borrarAllTodo() {
+    const action = new fromTodo.BorrarAllTodoAction();
+    this.store.dispatch(action);
   }
 
 }

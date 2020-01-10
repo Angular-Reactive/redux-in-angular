@@ -1,11 +1,13 @@
 import { Action } from '@ngrx/store';
+import { Todo } from '../../components/todo/models/todo.model';
 
 export enum ActionTypes {
   AGREGAR_TODO = '[TODO] Agregar Todo',
   TOGGLE_TODO = '[TODO] Toggle Todo',
   TOGGLE_ALL_TODO = '[TODO] Toggle All Todo',
   EDITAR_TODO = '[TODO] Editar Todo',
-  BORRAR_TODO = '[TODO] Borrar Todo'
+  BORRAR_TODO = '[TODO] Borrar Todo',
+  BORRAR_ALL_TODO = '[TODO] Borrar All Todo'
 }
 
 
@@ -34,21 +36,23 @@ export class ToggleAllTodoAction implements Action {
 export class EditarTodoAction implements Action {
   readonly type = ActionTypes.EDITAR_TODO;
 
-  constructor(public id: number, public texto: string) {
-
-  }
+  constructor(public id: number, public texto: string) {}
 }
 
 export class BorrarTodoAction implements Action {
   readonly type = ActionTypes.BORRAR_TODO;
 
-  constructor(public id: number) {
-
-  }
+  constructor(public id: number) { }
 }
+
+export class BorrarAllTodoAction implements Action {
+  readonly type = ActionTypes.BORRAR_ALL_TODO;
+}
+
 
 export type TodoActions = AgregarTodoAction |
                           ToggleTodoAction |
                           ToggleAllTodoAction |
                           EditarTodoAction |
-                          BorrarTodoAction;
+                          BorrarTodoAction |
+                          BorrarAllTodoAction;
