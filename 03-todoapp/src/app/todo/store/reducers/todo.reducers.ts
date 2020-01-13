@@ -9,6 +9,15 @@ export function todoReducer(state = initialState, action: fromActions.TodoAction
     case fromActions.TodoActionTypes.AGREGAR_TODO:
       return todoAdapter.addOne(action.todo, state);
 
+    case fromActions.TodoActionTypes.BORRAR_TODO:
+      return todoAdapter.removeOne(action.id, state);
+
+    case fromActions.TodoActionTypes.EDITAR_TODO:
+      return todoAdapter.updateOne({
+        id: action.id,
+        changes: action.changes
+      }, state);
+
     default:
       return state;
   }

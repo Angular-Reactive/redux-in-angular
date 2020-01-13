@@ -10,9 +10,21 @@ export enum TodoActionTypes {
   BORRAR_ALL_TODO = '[TODO] Borrar All Todo'
 }
 
-export class CreateAction implements Action {
+export class AgregarTodoAction implements Action {
   readonly type = TodoActionTypes.AGREGAR_TODO;
   constructor(public todo: Todo) {}
 }
 
-export type TodoActions = CreateAction;
+export class BorrarTodoAction implements Action {
+  readonly type = TodoActionTypes.BORRAR_TODO;
+  constructor(public id: number) {}
+}
+
+export class EditarTodoAction implements Action {
+  readonly type = TodoActionTypes.EDITAR_TODO;
+  constructor(public id: number, public changes: Partial<Todo>) {}
+}
+
+export type TodoActions = AgregarTodoAction |
+                          BorrarTodoAction |
+                          EditarTodoAction;
